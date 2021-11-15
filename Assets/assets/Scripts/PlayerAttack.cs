@@ -41,60 +41,25 @@ public class PlayerAttack : MonoBehaviour
        
     }
 
-
-    public void WeaponShoot()
+ private void ThrowArrowOrSpear(bool ThrowArrow)
     {
-        if(weapon_Manager.GetCurrentSelectedWeapon().fireType == WeaponFireType.MULTIPLE)
+        if(ThrowArrow)
         {
-            if(Input.GetMouseButton(0) && Time.time > nextTimeToFire)
-            {
-                nextTimeToFire = Time.time + 1f / fireRate;
-
-                weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
-            }
-
-                 BulletFired();
-
+            GameObject arrow = Instantiate(arrow_Prefab);
+            arrow.transform.position = arrow_Bow_StartPosition.position;
+            arrow.GetComponent<BowAndArrow>().Launch(mainCam);
         }
+
         else
         {
-            if(Input.GetMouseButtonDown(0))
-            {
-                if(weapon_Manager.GetCurrentSelectedWeapon().tag == Tags.AXE_TAG)
-                {
-                    weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
-                }
-            
-                if(weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.BULLET)
-                {
-                    weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
-                }
-
-                BulletFired();
-            
-            }  
-                else
-                {
-                    if(is_Aiming)
-                    {
-                         weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
-                         
-                         if (weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.ARROW)
-                         { 
-                             
-                         }
-                        else if (weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.SPEAR)
-                        {
-                        
-                        }
-                        
-                    }
-
-                }
+            GameObject spear = Instantiate(spear_Prefab);
+            spear.transform.position = arrow_Bow_StartPosition.position;
+            spear.GetComponent<BowAndArrow>().Launch(mainCam);
         }
-    }       
-            
-              
+    
+    
+    }
+
     void ZoomInAndOut()
     {
         if (weapon_Manager.GetCurrentSelectedWeapon().weapon_Aim == WeaponAim.AIM)
@@ -148,26 +113,64 @@ public class PlayerAttack : MonoBehaviour
     
        
      }
-    
-    
-    void ThrowArrowOrSpear(bool ThrowArrow)
+    public void WeaponShoot()
     {
-        if(ThrowArrow)
+        if(weapon_Manager.GetCurrentSelectedWeapon().fireType == WeaponFireType.MULTIPLE)
         {
-            GameObject arrow = Instantiate(arrow_Prefab);
-            arrow.transform.position = arrow_Bow_StartPosition.position;
-            arrow.GetComponent<BowAndArrow>().Launch(mainCam);
-        }
+            if(Input.GetMouseButton(0) && Time.time > nextTimeToFire)
+            {
+                nextTimeToFire = Time.time + 1f / fireRate;
 
+                weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
+            }
+
+                 BulletFired();
+
+        }
         else
         {
-            GameObject spear = Instantiate(spear_Prefab);
-            spear.transform.position = arrow_Bow_StartPosition.position;
-            spear.GetComponent<BowAndArrow>().Launch(mainCam);
+            if(Input.GetMouseButtonDown(0))
+            {
+                if(weapon_Manager.GetCurrentSelectedWeapon().tag == Tags.AXE_TAG)
+                {
+                    weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
+                }
+            
+                if(weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.BULLET)
+                {
+                    weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
+                }
+
+                BulletFired();
+            
+            }  
+                else
+                {
+                    if(is_Aiming)
+                    {
+                         weapon_Manager.GetCurrentSelectedWeapon().ShootAnimation();
+                         
+                         if (weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.ARROW)
+                         { 
+                             ThrowArrowOrSpear(true);
+                         }
+                        else if (weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.SPEAR)
+                        {
+                             ThrowArrowOrSpear(true);
+                            
+                        }
+                        
+                    }
+
+                }
         }
+    }       
+            
+              
     
     
-    }
+    
+  
    void BulletFired()
     {
         RaycastHit hit;

@@ -133,6 +133,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1979361971695931475, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
   m_PrefabInstance: {fileID: 864046508}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &264683686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4440801100718620652, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
+  m_PrefabInstance: {fileID: 864046508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &324006383 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3924013842875301288, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
@@ -4378,7 +4383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1481684970563651502, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1481684970563651504, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
       propertyPath: m_Layer
@@ -4584,6 +4589,10 @@ PrefabInstance:
       propertyPath: weapon_Aim
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1838098363023953200, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
+      propertyPath: attack_Point
+      value: 
+      objectReference: {fileID: 264683686}
     - target: {fileID: 1855052175415998559, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
       propertyPath: playOnAwake
       value: 1
@@ -4684,6 +4693,10 @@ PrefabInstance:
       propertyPath: weapon_Aim
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3082167595138994311, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
+      propertyPath: attack_Point
+      value: 
+      objectReference: {fileID: 264683686}
     - target: {fileID: 3197740740711961576, guid: 182ac2ee28e1a8b4ca73167328acccbc, type: 3}
       propertyPath: m_Sprite
       value: 

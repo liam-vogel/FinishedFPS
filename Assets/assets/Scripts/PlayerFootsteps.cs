@@ -34,7 +34,7 @@ public class PlayerFootsteps : MonoBehaviour
     void CheckToPlayFootstepSound()
     {
         if (!character_Controller.isGrounded)
-            return; 
+          //  return; 
         if (character_Controller.velocity.sqrMagnitude > 0 )
         {
             accumulated_Distance += Time.deltaTime;
