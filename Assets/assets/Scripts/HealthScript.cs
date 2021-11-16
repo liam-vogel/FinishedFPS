@@ -58,6 +58,7 @@ public class HealthScript : MonoBehaviour
 
         if (is_Cannibal || is_Boar)
         {
+            StartCoroutine(HurtSound());
             if (enemy_Controller.Enemy_State == EnemyState.PATROL)
             {
                 enemy_Controller.chase_Distance = 50f;
@@ -143,5 +144,10 @@ public class HealthScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         enemyAudio.Play_DeadSound();
+    }
+    IEnumerator HurtSound()
+    {
+        yield return new WaitForSeconds(0.1f);
+        enemyAudio.Play_HurtSound();
     }
 }

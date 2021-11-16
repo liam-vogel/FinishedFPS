@@ -1219,6 +1219,7 @@ MonoBehaviour:
   sprint_Speed: 10
   move_Speed: 5
   crouch_Speed: 2
+  sprint_Treshold: 10
 --- !u!114 &5873731430671493032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96032483a1dce294eb7245e3d85714f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health_Stats: {fileID: 0}
+  stamina_Stats: {fileID: 0}
 --- !u!1 &2811069764357010849
 GameObject:
   m_ObjectHideFlags: 0

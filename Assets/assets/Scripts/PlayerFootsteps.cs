@@ -34,11 +34,12 @@ public class PlayerFootsteps : MonoBehaviour
     void CheckToPlayFootstepSound()
     {
         if (!character_Controller.isGrounded)
-          //  return; 
+             return; 
+        
         if (character_Controller.velocity.sqrMagnitude > 0 )
         {
             accumulated_Distance += Time.deltaTime;
-
+            step_Distance = 0.01f;
             if (accumulated_Distance > step_Distance)
             {
                 footstep_Sound.volume = Random.Range(volume_Min, volume_Max);
@@ -46,7 +47,7 @@ public class PlayerFootsteps : MonoBehaviour
                 footstep_Sound.Play();
                 accumulated_Distance = 0f;
 
-                Random.Range(1f, 3f);
+                
             }
             else
             {

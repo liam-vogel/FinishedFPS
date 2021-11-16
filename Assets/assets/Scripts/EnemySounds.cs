@@ -7,7 +7,7 @@ public class EnemySounds : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField]
-    private AudioClip scream_Clip, die_Clip;
+    private AudioClip scream_Clip, die_Clip, hurt_Clip;
     [SerializeField]
     private AudioClip[] attack_Clips;
 
@@ -34,6 +34,12 @@ public class EnemySounds : MonoBehaviour
         audioSource.clip = die_Clip;
         audioSource.Play();
     }
+public void Play_HurtSound()
+    {
+        audioSource.clip = hurt_Clip;
+        audioSource.Play();
+    }
+
 
     // Start is called before the first frame update
     void Start()
