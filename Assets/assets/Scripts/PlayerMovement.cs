@@ -17,9 +17,12 @@ public class PlayerMovement : MonoBehaviour
 
     private float vertical_Velocity;
 
+    
     void Awake()
     {
         character_Controller = GetComponent<CharacterController>();
+
+        
     }
 
 
