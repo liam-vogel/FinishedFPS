@@ -7,9 +7,13 @@ public class DamageScript : MonoBehaviour
     public float damage = 2f;
     public float radius = 0.005f;
     public LayerMask layerMask;
+    //[SerializeField]
+   // public GameObject hitMarker;
 
-
-
+   // void hitMarked()
+  //  {
+  //      hitMarker.SetActive(true);
+ //   }
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +28,8 @@ public class DamageScript : MonoBehaviour
         if(hits.Length > 0)
         {
          hits[0].gameObject.GetComponent<HealthScript>().ApplyDamage(damage);
-            
-
+       // hitMarked();
+        
 
             gameObject.SetActive(false);
         }
