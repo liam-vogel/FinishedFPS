@@ -48,7 +48,7 @@ public class MouseLook : MonoBehaviour
         }
     }
 
-    void LockAndUnlockCursor()
+   public void LockAndUnlockCursor()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {

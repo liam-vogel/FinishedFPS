@@ -6,35 +6,37 @@ using UnityEngine.UI;
 public class Slots : MonoBehaviour
 {
 
-    private void Start()
+    public void CustomStart()
     {
         defaultSprite = GetComponent<Image>().sprite;
         amountText = transform.GetChild(0).GetComponent<Text>();
     }
 
-    public bool hasItem = false;
+    public Item slotsItem;
 
     Sprite defaultSprite;
     Text amountText;
 
-    private void Update()
-    {
-        CheckForItem();
-    }
+   
 
     public void CheckForItem()
     {
         if(transform.childCount > 1 )
         {
-            Item i = transform.GetChild(4).GetComponent<Item>();
-            hasItem = true;
-            GetComponent<Image>().sprite = i.itemSprite;
+          slotsItem = transform.GetChild(1).GetComponent<Item>();
+       
+            GetComponent<Image>().sprite = slotsItem.itemSprite;
+            if(slotsItem.amountInStack > 0)
+            {
+                amountText.text = slotsItem.amountInStack.ToString();
+            }
 
         }
         else
         {
+            slotsItem = null;
             GetComponent<Image>().sprite = defaultSprite;
-            amountText.text = "100x";
+            amountText.text = "0x";
         }
         
     }
