@@ -11,12 +11,25 @@ public class DragAndDropScript : MonoBehaviour
 
     GameObject curSlot;
     Item curSlotItem;
-
+    private Item slotsItem;
+    
+    public GameObject playerDropPos;
     public Image followMouseImage;
 
+
+   
     private void Update()
     {
         followMouseImage.transform.position = Input.mousePosition;
+
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            GameObject obj = GetGameObjectUnderMouse();
+            if (obj)
+                obj.GetComponent<Slots>().DropItem();
+        }
+
+
         if(Input.GetMouseButtonDown(0))
         {
           //  GameObject obj = GetGameObjectUnderMouse();
@@ -24,27 +37,29 @@ public class DragAndDropScript : MonoBehaviour
         }
         else if(Input.GetMouseButton(0))
         {
-           // if(curSlot && curSlot.GetComponent<Slots>().slotsItem)
-         //   {
+            if(curSlot && curSlot.GetComponent<Slots>().slotsItem)
+            {
                 followMouseImage.color = new Color(255, 255, 255, 255);
                 followMouseImage.sprite = curSlot.GetComponent<Image>().sprite;
-           // }
+            }
             
         }
         else if(Input.GetMouseButtonUp(0))
         {
             if(curSlot && curSlot.GetComponent<Slots>().slotsItem)
             {
-              //  curSlotItem = curSlot.GetComponent<Slots>().slotsItem;
+                curSlotItem = curSlot.GetComponent<Slots>().slotsItem;
 
                 GameObject newObj = GetGameObjectUnderMouse();
 
-                if(newObj && newObj != curSlot)
+                if (newObj && newObj != curSlot)
                 {
+                    if (newObj.GetComponent<ArmorSlots>() && newObj.GetComponent<ArmorSlots>().equipmentType != curSlotItem.equipmetType)
+                        return;
                     if (newObj.GetComponent<Slots>().slotsItem)
                     {
                         Item objectsItem = newObj.GetComponent<Slots>().slotsItem;
-                        if(objectsItem.ItemId == curSlotItem.ItemId && objectsItem.amountInStack != objectsItem.maxStackSize)
+                        if (objectsItem.ItemId == curSlotItem.ItemId && objectsItem.amountInStack != objectsItem.maxStackSize && !newObj.GetComponent<ArmorSlots>())
                         {
                             curSlotItem.transform.parent = null;
                             inv.AddItem(curSlotItem, objectsItem);
@@ -54,14 +69,14 @@ public class DragAndDropScript : MonoBehaviour
                             objectsItem.transform.parent = curSlot.transform;
                             curSlotItem.transform.parent = newObj.transform;
                         }
-                    
+
+                    }
+
+                    else
+                    {
+                        curSlotItem.transform.parent = newObj.transform;
                     }
                 }
-                else
-                {
-                    curSlotItem.transform.parent = newObj.transform;
-                }
-             
             }
         }
         else
@@ -70,7 +85,10 @@ public class DragAndDropScript : MonoBehaviour
             followMouseImage.color = new Color(0, 0, 0, 0);
         }
     
-    
+     foreach(Slots i in inv.equipSlots)
+        {
+            i.GetComponent<ArmorSlots>().Equip();
+        }
     }   
 
 

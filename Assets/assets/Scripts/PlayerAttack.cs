@@ -94,7 +94,9 @@ public class PlayerAttack : MonoBehaviour
                 {
                     weapon_Manager.GetCurrentSelectedWeapon().Aim(true);
                     is_Aiming = true;
+                    zoomCameraAnim.Play(AnimationTags.ZOOM_IN_ANIM);
                     ThrowArrowOrSpear(true);
+                 
                     
                 }
 
@@ -102,6 +104,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     weapon_Manager.GetCurrentSelectedWeapon().Aim(false);
                     is_Aiming = false;
+                    zoomCameraAnim.Play(AnimationTags.ZOOM_OUT_ANIM);
                     ThrowArrowOrSpear(false);
                 }
 

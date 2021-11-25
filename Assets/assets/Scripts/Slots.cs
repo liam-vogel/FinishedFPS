@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class Slots : MonoBehaviour
 {
-
+    public GameObject playerDropPos;
     public void CustomStart()
     {
         defaultSprite = GetComponent<Image>().sprite;
         amountText = transform.GetChild(0).GetComponent<Text>();
     }
 
+    public void DropItem()
+    {
+        if (slotsItem)
+        {
+            slotsItem.transform.parent = null;
+            slotsItem.gameObject.SetActive(true);
+            slotsItem.transform.position = playerDropPos.transform.position;
+        }
+    }
     public Item slotsItem;
 
     Sprite defaultSprite;

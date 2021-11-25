@@ -17,7 +17,9 @@ public class InventoryScript : MonoBehaviour
     public Slots[] slots;
     MouseLook Look;
 
-   // PlayerStats stats; 
+    PlayerStats stats;
+
+    public Slots[] equipSlots;
 
     void Start()
     {
@@ -27,6 +29,10 @@ public class InventoryScript : MonoBehaviour
         {
             i. CustomStart();
         }
+
+        foreach (Slots i in equipSlots)
+            i.CustomStart();
+
     } 
     private void Update()
     {
@@ -60,6 +66,9 @@ public class InventoryScript : MonoBehaviour
         {
             i.CheckForItem();
         }
+        foreach (Slots i in equipSlots)
+            i.CheckForItem();
+    
     }
 
     public void AddItem(Item itemToAdd, Item startingItem = null)
@@ -101,6 +110,11 @@ public class InventoryScript : MonoBehaviour
                 i.amountInStack += amountInStack;
                 Destroy(itemToAdd.gameObject);
                 return;
+            }
+            else
+            {
+                i.amountInStack = i.maxStackSize;
+                amountInStack -= amountThatCanBeAdded;
             }
         }
 

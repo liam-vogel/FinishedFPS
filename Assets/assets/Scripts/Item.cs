@@ -11,5 +11,7 @@ public class Item : MonoBehaviour
 
     public int ItemId;
 
+    public string equipmetType;
+    public int equipmentIndex;
 
 }
