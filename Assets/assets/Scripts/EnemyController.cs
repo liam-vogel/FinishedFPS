@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
 {
 
     private EnemyAttack enemy_Anim;
+    
     private NavMeshAgent navAgent;
     private EnemyState enemy_State;
 
@@ -74,6 +75,7 @@ public class EnemyController : MonoBehaviour
 
     void Patrol()
     {
+        
         navAgent.isStopped = false;
         navAgent.speed = walk_Speed;
 
