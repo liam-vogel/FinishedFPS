@@ -56,6 +56,8 @@ public class DragAndDropScript : MonoBehaviour
                 {
                     if (newObj.GetComponent<ArmorSlots>() && newObj.GetComponent<ArmorSlots>().equipmentType != curSlotItem.equipmetType)
                         return;
+                  //  if (newObj.GetComponent<HotBar>() && newObj.GetComponent<HotBar>().equipmentType != curSlotItem.equipmetType)
+                  //      return;
                     if (newObj.GetComponent<Slots>().slotsItem)
                     {
                         Item objectsItem = newObj.GetComponent<Slots>().slotsItem;
