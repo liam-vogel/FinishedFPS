@@ -57,16 +57,9 @@ public class SprintAndCrouch : MonoBehaviour
     {
         Sprint();
      
-       Crouch();
+      // Crouch();
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            is_Crouching = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-            is_Crouching = false;
-        }
+      
     }
 
     void Sprint()
@@ -131,42 +124,42 @@ public class SprintAndCrouch : MonoBehaviour
 
     void Crouch()
     {
+         if(Input.GetKeyDown(KeyCode.LeftControl))
+          {
        
-            
-            if (is_Crouching)
+
+              if (is_Crouching)
+             {
+                look_Root.localPosition = new Vector3(0f, stand_Height, 0f);
+                playerMovement.speed = move_Speed;
+
+
+                player_Footsteps.volume_Min = walk_Volume_Min;
+                player_Footsteps.volume_Max = walk_Volume_Max;
+                player_Footsteps.step_Distance = walk_Step_Distance;
+
+            }
+
+            else
             {
                 look_Root.localPosition = new Vector3(0f, crouch_Height, 0f);
-               // playerMovement.speed = crouch_Speed;
+                playerMovement.speed = crouch_Speed;
                 player_Footsteps.step_Distance = crouch_Step_Distance;
 
 
                 player_Footsteps.step_Distance = sprint_Step_Distance;
                 player_Footsteps.volume_Min = crouch_Volume;
                 player_Footsteps.volume_Max = crouch_Volume;
-                //if (Input.GetKeyUp(KeyCode.LeftControl))
-                    //is_Crouching = false;
+
+                is_Crouching = true;
+
+
             }
 
-            else
-            {
-                if (is_Crouching == false)
-                {
-                    look_Root.localPosition = new Vector3(0f, stand_Height, 0f);
-                  //  playerMovement.speed = move_Speed;
+         }
 
-
-                    player_Footsteps.volume_Min = walk_Volume_Min;
-                    player_Footsteps.volume_Max = walk_Volume_Max;
-                    player_Footsteps.step_Distance = walk_Step_Distance;
-
-                    
-                }
-             
-
-               
-            }
         
-        
+
     }
 }              
                                                              

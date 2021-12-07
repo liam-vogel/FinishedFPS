@@ -10,7 +10,7 @@ public class PlayerFootsteps : MonoBehaviour
 
     private CharacterController character_Controller;
 
-    [HideInInspector]
+   // [HideInInspector]
     public float volume_Min, volume_Max;
 
     private float accumulated_Distance;
@@ -40,7 +40,7 @@ public class PlayerFootsteps : MonoBehaviour
         {
             accumulated_Distance += Time.deltaTime;
             step_Distance = 0.01f;
-            if (accumulated_Distance > step_Distance)
+            if (accumulated_Distance < step_Distance)
             {
                 footstep_Sound.volume = Random.Range(volume_Min, volume_Max);
                 footstep_Sound.clip = footstep_Clip[Random.Range(0, footstep_Clip.Length)];

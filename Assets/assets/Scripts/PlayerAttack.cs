@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private WeaponManager weapon_Manager;
+    private WeaponsHandler weapon_Handler;
 
     public float fireRate = 15f;
     private float nextTimeToFire;
@@ -23,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
     void Awake()
     {
         weapon_Manager = GetComponent < WeaponManager>();
+        weapon_Handler = GetComponent < WeaponsHandler>();
 
         zoomCameraAnim = transform.Find(Tags.LOOK_ROOT)
            .transform.Find(Tags.ZOOM_CAMERA).GetComponent<Animator>();
@@ -156,6 +158,7 @@ public class PlayerAttack : MonoBehaviour
                          if (weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.ARROW)
                          { 
                              ThrowArrowOrSpear(true);
+                             weapon_Handler.Play_ShootSound();
                          }
                         else if (weapon_Manager.GetCurrentSelectedWeapon().bulletType == WeaponBulletType.SPEAR)
                         {

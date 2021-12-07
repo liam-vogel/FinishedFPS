@@ -56,7 +56,7 @@ public class InventoryScript : MonoBehaviour
             {
                  staminaBar.SetActive(true);
                  healthBar.SetActive(true);
-                 crossHair.SetActive(true);
+               //  crossHair.SetActive(true);
                  lookRoot.SetActive(true);
                 // Look.LockAndUnlockCursor(); Cursor.lockState = CursorLockMode.Locked;
                 // Look.LockAndUnlockCursor(); Cursor.visible = false;
